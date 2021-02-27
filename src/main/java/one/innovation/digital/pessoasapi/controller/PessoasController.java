@@ -10,6 +10,6 @@ public class PessoasController {
 
     @GetMapping
     public String getBook(){
-        return "API Test";
+        return "API Test, funcionando, após sofrer :)";
     }
 }
