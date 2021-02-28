@@ -37,4 +37,10 @@ public class PessoaController {
     public PessoaDTO procurarPorId(@PathVariable Long id) throws PessoaNaoEncontrada {
         return pessoaService.procurarPorId(id);
     }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void detetarPorId(@PathVariable Long id) throws PessoaNaoEncontrada {
+        pessoaService.deletarPorId(id);
+    }
 }

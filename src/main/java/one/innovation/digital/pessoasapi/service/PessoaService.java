@@ -43,8 +43,18 @@ public class PessoaService {
     }
 
     public PessoaDTO procurarPorId(Long id) throws PessoaNaoEncontrada {
-        Pessoa pessoa = pessoaRepository.findById(id).orElseThrow(
-                () -> new PessoaNaoEncontrada(id));
+        Pessoa pessoa = verificaSeExiste(id);
         return pessoaMapper.toDTO(pessoa);
+    }
+
+    public void deletarPorId(Long id) throws PessoaNaoEncontrada {
+        verificaSeExiste(id);
+        pessoaRepository.deleteById(id);
+    }
+
+    private Pessoa verificaSeExiste(Long id) throws PessoaNaoEncontrada {
+        return pessoaRepository
+                .findById(id)
+                .orElseThrow(() -> new PessoaNaoEncontrada(id));
     }
 }
