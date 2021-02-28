@@ -1,4 +1,4 @@
-package one.innovation.digital.pessoasapi.dto;
+package one.innovation.digital.pessoasapi.dto.response;
 
 import lombok.Builder;
 import lombok.Data;
