@@ -2,6 +2,7 @@ package one.innovation.digital.pessoasapi.controller;
 
 import one.innovation.digital.pessoasapi.dto.response.MessageResponseDTO;
 import one.innovation.digital.pessoasapi.dto.request.PessoaDTO;
+import one.innovation.digital.pessoasapi.exception.PessoaNaoEncontrada;
 import one.innovation.digital.pessoasapi.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,5 +31,10 @@ public class PessoaController {
     @GetMapping
     public List<PessoaDTO> listarTodasAsPessoas(){
         return pessoaService.listarTodasAsPessoas();
+    }
+
+    @GetMapping("/{id}")
+    public PessoaDTO procurarPorId(@PathVariable Long id) throws PessoaNaoEncontrada {
+        return pessoaService.procurarPorId(id);
     }
 }
