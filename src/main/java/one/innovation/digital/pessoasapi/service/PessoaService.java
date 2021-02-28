@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,10 +27,7 @@ public class PessoaService {
         Pessoa pessoaASerSalva = pessoaMapper.toModel(pessoaDTO);
         Pessoa pessoaSalva = pessoaRepository.save(pessoaASerSalva);
 
-        return MessageResponseDTO
-                .builder()
-                .mensagem("Pessoa com o ID: " + pessoaSalva.getId() + " , criada com sucesso!")
-                .build();
+        return criarMessageResponse(pessoaSalva.getId(), " , criada com sucesso!");
     }
 
     public List<PessoaDTO> listarTodasAsPessoas() {
@@ -52,9 +48,24 @@ public class PessoaService {
         pessoaRepository.deleteById(id);
     }
 
+    public MessageResponseDTO atualizarPorId(Long id, PessoaDTO pessoaDTO) throws PessoaNaoEncontrada {
+        verificaSeExiste(id);
+        Pessoa pessoaASerAtualizada = pessoaMapper.toModel(pessoaDTO);
+        Pessoa pessoaAtualizada = pessoaRepository.save(pessoaASerAtualizada);
+
+        return criarMessageResponse(pessoaAtualizada.getId(), " , atualizada com sucesso!");
+    }
+
     private Pessoa verificaSeExiste(Long id) throws PessoaNaoEncontrada {
         return pessoaRepository
                 .findById(id)
                 .orElseThrow(() -> new PessoaNaoEncontrada(id));
+    }
+
+    private MessageResponseDTO criarMessageResponse(Long id, String mensagem) {
+        return MessageResponseDTO
+                .builder()
+                .mensagem("Pessoa com o ID: " + id + mensagem)
+                .build();
     }
 }
