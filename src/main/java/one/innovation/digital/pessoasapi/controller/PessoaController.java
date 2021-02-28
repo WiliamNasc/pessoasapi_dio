@@ -1,8 +1,8 @@
 package one.innovation.digital.pessoasapi.controller;
 
+import lombok.AllArgsConstructor;
 import one.innovation.digital.pessoasapi.dto.response.MessageResponseDTO;
 import one.innovation.digital.pessoasapi.dto.request.PessoaDTO;
-import one.innovation.digital.pessoasapi.entity.Pessoa;
 import one.innovation.digital.pessoasapi.exception.PessoaNaoEncontrada;
 import one.innovation.digital.pessoasapi.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +14,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/pessoa")
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PessoaController {
 
     private PessoaService pessoaService;
-
-    @Autowired
-    public PessoaController(PessoaService pessoaService){
-        this.pessoaService = pessoaService;
-    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

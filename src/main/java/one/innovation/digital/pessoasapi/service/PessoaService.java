@@ -1,5 +1,6 @@
 package one.innovation.digital.pessoasapi.service;
 
+import lombok.AllArgsConstructor;
 import one.innovation.digital.pessoasapi.dto.response.MessageResponseDTO;
 import one.innovation.digital.pessoasapi.dto.request.PessoaDTO;
 import one.innovation.digital.pessoasapi.entity.Pessoa;
@@ -13,15 +14,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PessoaService {
     private PessoaRepository pessoaRepository;
 
     private final PessoaMapper pessoaMapper = PessoaMapper.INSTANCE;
-
-    @Autowired
-    public PessoaService(PessoaRepository pessoaRepository){
-        this.pessoaRepository = pessoaRepository;
-    }
 
     public MessageResponseDTO criarPessoa(PessoaDTO pessoaDTO){
         Pessoa pessoaASerSalva = pessoaMapper.toModel(pessoaDTO);
