@@ -17,15 +17,15 @@ Padrão arquitetural
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Informaçõa sobre REST:
+Informaçõa sobre o REST:
 
-- RESTful: significa, o quanto nós estamos aplicando os conceitos de REST;
+- RESTFUL: significa, o quanto nós estamos aplicando os conceitos de REST;
 
 - Niveis de maturidade REST, segundo Richardson:
-  Level 3 - HyperMedia controls
-  Level 2 - Http verbs
-  Level 1 - Resources
-  Level 0 - The swamp of POX
+  - Level 3 - HyperMedia controls;
+  - Level 2 - Http verbs;
+  - Level 1 - Resources;
+  - Level 0 - The swamp of POX.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
